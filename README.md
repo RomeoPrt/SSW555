@@ -6,8 +6,8 @@ Members: Nozanin Bahridinova, Allan Joseph, Ivana Lu, Birva Patel, Romeo Willis-
 Sprint 1: 
 * Created skeleton of website called SpeakSmart 
 * Implemented front-end for Account Creation 
-* Implemented a generic timer feature 
-* Implemented medication confirmation feature 
+* Implemented front-end for Timer feature 
+* Implemented front-end for Medication Confirmation feature 
 
 Directions: Run on a local server to view this website 
 
