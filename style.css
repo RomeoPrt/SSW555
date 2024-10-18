@@ -83,57 +83,49 @@ header {
     color: #162938;
 }
 
+/* Popup Wrapper */
 .wrapper {
     position: relative;
     width: 400px;
-    height: 440px;
+    height: auto;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
     backdrop-filter: blur(20px);
     box-shadow: 0 0 30px rgba(0, 0, 0, .5);
-    display: flex;
+    display: none; /* Hide wrapper initially */
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    transform: scale(0);
     transition: transform .5s ease, height .2s ease;
 }
 
 .wrapper.active-popup {
-    transform: scale(1);
+    display: flex; /* Show wrapper when a popup is active */
 }
 
+/* Controls the height of the popup */
 .wrapper.active {
-    height: 520px;
+    height: auto;
 }
 
 .wrapper .form-box {
     width: 100%;
     padding: 40px;
+    display: none; /* Hide all forms by default */
 }
 
-.wrapper .form-box.login {
-    transition: transform .18s ease;
-    transform: translateX(0);
-}
-
+/* Show Login Form */
 .wrapper.active .form-box.login {
-    transition: none;
-    transform: translateX(-400px);
+    display: block; /* Show login form */
 }
 
-.wrapper .form-box.register {
-    position: absolute;
-    transition: none;
-    transform: translateX(400px);
-}
-
+/* Show Register Form */
 .wrapper.active .form-box.register {
-    transition: transform .18s ease;
-    transform: translateX(0);
+    display: block; /* Show register form */
 }
 
+/* Close Icon */
 .wrapper .icon-close {
     position: absolute;
     top: 0;
@@ -151,6 +143,7 @@ header {
     z-index: 1;
 }
 
+/* Headings */
 .form-box h2 {
     font-size: 2em;
     color: #162938;
@@ -254,4 +247,20 @@ header {
 
 .login-register p a:hover {
     text-decoration: underline;
+}
+
+/* Timer Form */
+.wrapper .form-box.timer {
+    display: none; /* Hide Timer by default */
+}
+
+.wrapper.active-timer .form-box.timer {
+    display: block; /* Show Timer form when active */
+}
+
+.form-box.timer p {
+    font-size: 1.2em;
+    color: #162938;
+    text-align: center;
+    margin: 20px 0;
 }
