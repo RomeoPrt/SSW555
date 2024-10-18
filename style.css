@@ -87,7 +87,7 @@ header {
 .wrapper {
     position: relative;
     width: 400px;
-    height: auto;
+    height: 440px;
     background: transparent;
     border: 2px solid rgba(255, 255, 255, .5);
     border-radius: 20px;
@@ -100,32 +100,37 @@ header {
     transition: transform .5s ease, height .2s ease;
 }
 
+/* When any popup is active, show wrapper */
 .wrapper.active-popup {
     display: flex; /* Show wrapper when a popup is active */
 }
 
-/* Controls the height of the popup */
-.wrapper.active {
-    height: auto;
-}
-
+/* Forms - hide by default */
 .wrapper .form-box {
-    width: 100%;
-    padding: 40px;
-    display: none; /* Hide all forms by default */
+    display: none;
 }
 
-/* Show Login Form */
+/* Show login form */
 .wrapper.active .form-box.login {
-    display: block; /* Show login form */
+    display: block;
 }
 
-/* Show Register Form */
+/* Show register form */
 .wrapper.active .form-box.register {
-    display: block; /* Show register form */
+    display: block;
 }
 
-/* Close Icon */
+/* Show timer form */
+.wrapper.active-timer .form-box.timer {
+    display: block;
+}
+
+/* Show medication reminder form */
+.wrapper.active-medication .form-box.medication {
+    display: block;
+}
+
+/* Close button */
 .wrapper .icon-close {
     position: absolute;
     top: 0;
@@ -143,7 +148,6 @@ header {
     z-index: 1;
 }
 
-/* Headings */
 .form-box h2 {
     font-size: 2em;
     color: #162938;
@@ -231,36 +235,58 @@ header {
     font-weight: 500;
 }
 
-.login-register {
-    font-size: .9em;
+/* Timer and Medication Reminder specific styles */
+.form-box.timer, .form-box.medication {
+    display: none; /* Hide by default */
+}
+
+.form-box.timer h2, .form-box.medication h2 {
+    font-size: 2em;
     color: #162938;
     text-align: center;
-    font-weight: 500;
-    margin: 25px 0 10px;
 }
 
-.login-register p a {
+.form-box.timer .input-box, .form-box.medication .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+    margin: 30px 0;
+}
+
+.form-box.timer .input-box input, .form-box.medication .input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
     color: #162938;
-    text-decoration: none;
     font-weight: 600;
+    padding: 0 35px 0 5px;
 }
 
-.login-register p a:hover {
-    text-decoration: underline;
+.form-box.timer .input-box label, .form-box.medication .input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: #162938;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
 }
 
-/* Timer Form */
-.wrapper .form-box.timer {
-    display: none; /* Hide Timer by default */
+.form-box.timer .input-box input:focus~label, .form-box.medication .input-box input:focus~label,
+.form-box.timer .input-box input:valid~label, .form-box.medication .input-box input:valid~label {
+    top: -5px;
 }
 
-.wrapper.active-timer .form-box.timer {
-    display: block; /* Show Timer form when active */
-}
-
-.form-box.timer p {
+.form-box.timer .input-box .icon, .form-box.medication .input-box .icon {
+    position: absolute;
+    right: 8px;
     font-size: 1.2em;
     color: #162938;
-    text-align: center;
-    margin: 20px 0;
+    line-height: 57px;
 }

@@ -14,9 +14,9 @@
     <header>
         <h2 class="logo">SpeakSmart</h2>
         <nav class="navigation">
-            <a href="#timer">Timer</a> 
+            <a href="#timer">Timer</a>
             <a href="#">About</a>
-            <a href="#">Services</a>
+            <a href="#medication-reminder">Medication Reminder</a> <!-- Updated here -->
             <a href="#">Contact</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
@@ -88,13 +88,32 @@
                 </div>              
             </form>
         </div>
-
         
         <div class="form-box timer">
             <h2>Timers</h2>
             <p>In this page will be displayed timers for all your logged activities.</p>
         </div>
 
+        <div class="form-box medication">
+            <h2>Medication Reminder</h2> <!-- Updated the title here -->
+            <form action="#">
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="medkit"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>Medication Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="time"></ion-icon>
+                    </span>
+                    <input type="text" required>
+                    <label>Schedule</label>
+                </div>
+                <button type="submit" class="btn">Set Reminder</button>
+            </form>
+        </div>
     </div>
 
     <script src="script.js"></script>
