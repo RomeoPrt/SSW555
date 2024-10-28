@@ -125,6 +125,16 @@ header {
     display: block;
 }
 
+/* Show medication history form */
+.wrapper.active-history .form-box.history {
+    display: block;
+}
+
+/* Show symptom input form */
+.wrapper.active-sinput .form-box.sinput {
+    display: block;
+}
+
 /* Show medication reminder form */
 .wrapper.active-medication .form-box.medication {
     display: block;
