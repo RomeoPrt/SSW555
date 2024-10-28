@@ -290,3 +290,69 @@ header {
     color: #162938;
     line-height: 57px;
 }
+
+/* Notification Button */
+.notification-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background: #162938;
+    border: none;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+    z-index: 1000;
+}
+
+.notification-btn:hover {
+    background: #1c3a4a;
+}
+
+/* Notification Pop-up */
+.notification-popup {
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    width: 500px;
+    padding: 20px;
+    background: #fff;
+    border: 2px solid #162938;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: none; /* Hidden by default */
+    z-index: 1000;
+}
+
+.notification-popup h3 {
+    font-size: 1.2em;
+    color: #162938;
+    margin-bottom: 10px;
+}
+
+.notification-popup p {
+    font-size: 0.95em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.notification-popup .close-popup {
+    background: #162938;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.notification-popup .close-popup:hover {
+    background: #1c3a4a;
+}

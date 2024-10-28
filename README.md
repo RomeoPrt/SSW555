@@ -1,7 +1,7 @@
 # SSW555
 Project for SSW 555: Voice Assistant 
 
-Members: Nozanin Bahridinova, Allan Joseph, Ivana Lu, Birva Patel, Romeo Willis-Parreott 
+Members: Nozanin Bahridinova, Allan Joseph, Ivana Lu, Birva Patel, Romeo Parreott 
 
 Sprint 1: 
 * Created skeleton of website called SpeakSmart 

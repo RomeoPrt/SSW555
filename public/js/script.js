@@ -57,3 +57,18 @@ iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-timer'); // Hide timer form
     wrapper.classList.remove('active-medication'); // Hide medication reminder form
 });
+
+// Select the notification button and pop-up elements
+const notificationBtn = document.querySelector('.notification-btn');
+const notificationPopup = document.querySelector('.notification-popup');
+const closePopupBtn = document.querySelector('.close-popup');
+
+// Show the notification pop-up when the button is clicked
+notificationBtn.addEventListener('click', () => {
+    notificationPopup.style.display = 'block'; // Show pop-up
+});
+
+// Hide the notification pop-up when the close button is clicked
+closePopupBtn.addEventListener('click', () => {
+    notificationPopup.style.display = 'none'; // Hide pop-up
+});
