@@ -43,3 +43,43 @@ Before running ensure you all necessary packages, open cmd in administrator mode
 * Check installation: "pip show ollama" (should be 0.3.3)
 7. Run program in vscode: "llama.py"
 
+
+
+And Before you begin, ensure you have Node.js installed on your system. This project requires Node.js version 14.0.0 or higher.
+
+## Installing Node.js
+
+### Windows
+1. Visit the official Node.js website at [https://nodejs.org](https://nodejs.org)
+2. Download the LTS (Long Term Support) version
+3. Run the installer (.msi file)
+4. Follow the installation wizard prompts
+5. Open Command Prompt and verify installation:
+   ```bash
+   node --version
+   npm --version
+   ```
+
+### macOS
+Using Homebrew (recommended):
+```bash
+brew install node
+```
+
+## Project Setup
+
+1. Clone the repository:
+```bash
+git clone [repository-url]
+cd [project-directory]
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. To start the production server:
+```bash
+npm start
+```

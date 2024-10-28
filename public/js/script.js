@@ -58,7 +58,6 @@ iconClose.addEventListener('click', () => {
     wrapper.classList.remove('active-medication'); // Hide medication reminder form
 });
 
-
 // Select the notification button and pop-up elements
 const notificationBtn = document.querySelector('.notification-btn');
 const notificationPopup = document.querySelector('.notification-popup');
