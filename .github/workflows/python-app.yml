@@ -1,0 +1,35 @@
+name: CI for Llama Voice Assistant
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out the code from the repository
+      - uses: actions/checkout@v4
+
+      # Step 2: Set up Python environment
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      # Step 3: Upgrade pip and install minimal dependencies (speech_recognition and gtts if needed)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install speechrecognition gtts
+
+      # Step 4: Run the unit tests using unittest
+      - name: Run tests with unittest
+        run: |
+          python -m unittest discover -s . -p "*Test.py"
