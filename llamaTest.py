@@ -1,6 +1,13 @@
 import unittest # Import unittest for testing 
 import os # Import os for file manipulation
-from llama import load_history, save_history, query_llama # Import functions to be tested
+from unittest.mock import Mock
+
+import sys
+
+# Mock ollama before importing llama
+sys.modules['ollama'] = Mock()
+sys.modules['pygame'] = Mock()
+from llama import load_history, save_history, query_llama
 
 
 class TestVoiceAssistant(unittest.TestCase):
