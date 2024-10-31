@@ -5,8 +5,12 @@
   "main": "script.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b && vite build",
+    "dev": "vite",
+    "format": "prettier --write .",
+    "lint": "eslint . --cache",
+    "lint-fix": "eslint . --fix --cache",
+    "preview": "vite preview"
   },
   "author": "",
   "license": "ISC",
