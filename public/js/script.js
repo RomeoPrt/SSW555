@@ -113,3 +113,19 @@ notificationBtn.addEventListener('click', () => {
 closePopupBtn.addEventListener('click', () => {
     notificationPopup.style.display = 'none'; // Hide pop-up
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const contactLink = document.querySelector("#contact-link");
+    const contactPopup = document.querySelector(".contact-popup");
+    const closeContactPopupButton = document.querySelector(".close-contact-popup");
+
+    contactLink.addEventListener("click", function (event) {
+        event.preventDefault(); // Prevents page from jumping to top
+        contactPopup.style.display = "block"; // Show the pop-up
+    });
+
+    closeContactPopupButton.addEventListener("click", function () {
+        contactPopup.style.display = "none"; // Hide the pop-up
+    });
+});
+

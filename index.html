@@ -20,10 +20,12 @@
             <a href="#timer">Timer</a>
             <a href="#">About</a>
             <a href="#medication-reminder">Medication Reminder</a> <!-- Updated here -->
-            <a href="#">Contact</a>
+            <a href="#" id="contact-link">Contact</a>
             <button class="btnLogin-popup">Login</button>
         </nav>
     </header>
+
+
 
     <div class="wrapper">
         <span class="icon-close">
@@ -128,6 +130,7 @@
             </form>
         </div>
     </div>
+
     <button class="notification-btn">
         <ion-icon name="notifications-outline"></ion-icon>
     </button>
@@ -138,8 +141,33 @@
         <p>Stay updated with the latest reminders for your scheduled activities.</p>
         <button class="close-popup">Close</button>
     </div>
+
+    <div class="contact-popup" style="display: none;">
+        <h3>Contact Us</h3>
+        <p>Email: sample@example.com</p>
+        <p>Phone: 123-456-7890</p>
+    
+        <div class="social-media-icons">
+            <a href="https://www.instagram.com" target="_blank" class="social-icon instagram">
+                <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+            <a href="https://www.facebook.com" target="_blank" class="social-icon facebook">
+                <ion-icon name="logo-facebook"></ion-icon>
+            </a>
+            <a href="https://www.twitter.com" target="_blank" class="social-icon twitter">
+                <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+        </div>
+    
+        <button class="close-contact-popup">Close</button>
+    </div>
+    
+
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+
+
 </body>
 
 </html>
