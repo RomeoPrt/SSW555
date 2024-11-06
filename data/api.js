@@ -31,4 +31,20 @@ const create_medication = async (medicationName, strength, dosageForm, frequency
 }
 
 
+// const create_medication = async (medicationName, strength, dosageForm, frequency) => {
+//     const medicine = {
+//       _id: new ObjectId(),
+//       medicationName,
+//       strength,
+//       dosageForm,
+//       frequency,
+//       currentlyInUse: true,
+//       createdAt: new Date()
+//     };
+  
+//     const newMedicine = await medicineCollection.insertOne(medicine);
+//     return medicine;
+// };  
+
+
 export { create_medication }
