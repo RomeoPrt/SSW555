@@ -1,0 +1,69 @@
+<div class="container">
+  <div class="sidebar">
+    <h2> <a href="/medications"> My Medications </a> </h2>
+    <div class="medicine-list" id="medicineList">
+      {{#each user.medicine}}
+      <div class="medicine-item">
+        <h3>{{medicationName}}</h3>
+        <div class="medicine-details">
+          <div>Strength: {{strength}}mg</div>
+          <div>Form: {{dosageForm}}</div>
+          <div>Frequency: {{frequency}}</div>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <div class="add-medicine-form">
+      <h3>Add New Medication</h3>
+      <form id="addMedicineForm">
+        <div class="form-group">
+          <label for="medicationName">Medication Name</label>
+          <input type="text" id="medicationName" name="medicationName" required>
+        </div>
+        <div class="form-group">
+          <label for="strength">Strength (mg)</label>
+          <input type="number" id="strength" name="strength" required min="1">
+        </div>
+        <div class="form-group">
+          <label for="dosageForm">Dosage Form</label>
+          <select id="dosageForm" name="dosageForm" required>
+            <option value="">Select form</option>
+            <option value="tablet">Tablet</option>
+            <option value="capsule">Capsule</option>
+            <option value="liquid">Liquid</option>
+            <option value="injection">Injection</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="frequency">Frequency</label>
+          <input type="text" id="frequency" name="frequency" required placeholder="e.g., Once daily">
+        </div>
+        <button type="submit" class="add-btn">Add Medication</button>
+      </form>
+      <div id="errorMessage" class="error-message"></div>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="header">
+      <h1>Hi {{user.firstName}}</h1>
+      <a href="/logout" class="logout-btn">Logout</a>
+    </div>
+    <div class="voice-assistant">
+      <h2>Ollama Voice Assistant</h2>
+      <div id="statusMessage" class="status not-listening">
+        Microphone is inactive
+      </div>
+      <button id="toggleButton" class="inactive">Start Listening</button>
+      <div class="transcript-container" id="conversationContainer">
+        {{#each conversationMessages}}
+        <div class="message {{this.role}}-message">
+          {{this.content}}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/public/js/voice-assistant.js"></script>
+<script src="/public/js/medicine-management.js"></script>

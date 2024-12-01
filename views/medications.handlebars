@@ -1,0 +1,11 @@
+<h1>Medications</h1>
+<ul id="medication-list">
+    {{#each medications}}
+        <li id="med-{{_id}}">
+            {{medicationName}} ({{strength}} mg, {{dosageForm}}, {{frequency}})
+            <button onclick="removeMedication('{{_id}}')">Remove</button>
+        </li>
+    {{/each}}
+</ul>
+
+<scrip src="/public/js/medication.js"t></script>

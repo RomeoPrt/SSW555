@@ -1,0 +1,24 @@
+{
+  "name": "project555",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.1",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.1",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.11.0",
+    "path": "^0.12.7",
+    "project555": "file:"
+  }
+}

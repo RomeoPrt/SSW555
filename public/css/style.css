@@ -1,0 +1,190 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  body {
+    background-color: #f5f8fa;
+    min-height: 100vh;
+  }
+  
+  .app-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 300px;
+    background-color: #ffffff;
+    border-right: 1px solid #e1e8ed;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+  }
+  
+  .main-content {
+    margin-left: 300px; /* Same as sidebar width */
+    flex: 1;
+    min-height: 100vh;
+    background-color: #ffffff;
+    padding: 20px;
+  }
+  
+  .medicine-list {
+    margin-bottom: 20px;
+  }
+  
+  .medicine-item {
+    padding: 10px;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+  }
+  
+  .medicine-item h3 {
+    margin: 0;
+    color: #14171a;
+    font-size: 1rem;
+  }
+  
+  .medicine-details {
+    color: #657786;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+/* Keep all your original CSS the same, just update/add these specific styles */
+
+.add-medicine-form {
+    border-top: 1px solid #e1e8ed;
+    padding-top: 15px;
+    margin-top: 15px;
+  }
+  
+  .add-medicine-form h3 {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    color: #14171a;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 3px;
+    color: #14171a;
+    font-size: 0.9rem;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #e1e8ed;
+    border-radius: 4px;
+    font-size: 0.9rem;
+  }
+  
+  .add-btn {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .add-btn:hover {
+    background-color: #1991da;
+  }
+  
+  .error-message {
+    color: #e0245e;
+    font-size: 0.9rem;
+    margin-top: 5px;
+  }
+  
+  /* Original styles for main content */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 1.5rem;
+    color: #14171a;
+  }
+  
+  .logout-btn {
+    color: #1da1f2;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .voice-assistant h2 {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+    color: #14171a;
+    text-align: center;
+  }
+  
+  .status {
+    text-align: center;
+    margin: 10px 0;
+    color: #657786;
+  }
+  
+  .inactive {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #e1e8ed;
+    color: #14171a;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .transcript-container {
+    margin-top: 20px;
+    max-height: calc(100vh - 300px);
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #e1e8ed;
+    border-radius: 10px;
+    background-color: #f5f8fa;
+  }
+  
+  .message {
+    padding: 5px 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+  }
+  
+  .user-message {
+    background-color: #1da1f2;
+    color: #ffffff;
+    text-align: left;
+  }
+  
+  .assistant-message {
+    background-color: #e1e8ed;
+    color: #14171a;
+    text-align: left;
+  }
