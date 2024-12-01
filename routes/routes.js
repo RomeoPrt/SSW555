@@ -7,7 +7,8 @@ import { create_medication, get_all_medications, get_medicine_by_id, delete_medi
 
 const router = Router();
 
-const aiModel = spawn("python3.10", ["voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
+// const aiModel = spawn("python3.10", ["voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
+const aiModel = spawn("python", ["voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
 let aiBuffer = [];
 
 aiModel.stdout.on("data", (data) => {

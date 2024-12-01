@@ -9,6 +9,7 @@
           <div>Strength: {{strength}}mg</div>
           <div>Form: {{dosageForm}}</div>
           <div>Frequency: {{frequency}}</div>
+          <button onclick="removeMedication('{{_id}}')" class="remove-btn">Remove</button>
         </div>
       </div>
       {{/each}}
@@ -36,7 +37,19 @@
         </div>
         <div class="form-group">
           <label for="frequency">Frequency</label>
-          <input type="text" id="frequency" name="frequency" required placeholder="e.g., Once daily">
+          <select id="frequencyOption" name="frequencyOption" required>
+            <option value="">Select frequency</option>
+            <option value="hourly">Hourly</option>
+            <option value="daily">Daily</option>
+            <option value="weekly">Weekly</option>
+            <option value="monthly">Monthly</option>
+            <option value="custom">Custom</option>
+          </select>
+          <div id="timeInputContainer" class="time-input">
+            <input type="time" id="medicationTime" name="medicationTime" required>
+            <input type="text" id="customFrequency" name="customFrequency" 
+                   placeholder="e.g., Every 4 hours" style="display: none;">
+          </div>
         </div>
         <button type="submit" class="add-btn">Add Medication</button>
       </form>
@@ -67,3 +80,4 @@
 
 <script src="/public/js/voice-assistant.js"></script>
 <script src="/public/js/medicine-management.js"></script>
+<script src="/public/js/medication.js"></script>

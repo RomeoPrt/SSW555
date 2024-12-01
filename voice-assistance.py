@@ -1,10 +1,31 @@
-# voice-assistance.py
 import ollama
 import json
 import sys
 import os
+import pygame
+from gtts import gTTS
+# voice-assistance.py
 
 HISTORY_FILE = "./history.txt"
+
+def AUDIO_FILE():
+    return "response.mp3"
+
+def speak(text):
+    """Converts text to speech and plays the audio."""
+    tts = gTTS(text=text, lang='en')
+    tts.save(AUDIO_FILE())
+
+    # Initialize pygame mixer
+    pygame.mixer.init()
+    pygame.mixer.music.load(AUDIO_FILE())
+    pygame.mixer.music.play()
+
+    # Wait for the audio to finish
+    while pygame.mixer.music.get_busy():
+        continue 
+
+    pygame.mixer.quit()
 
 def load_history():
     if os.path.exists(HISTORY_FILE):
@@ -29,7 +50,10 @@ def query_llama(prompt, history=""):
     full_prompt = (
         f"{history}\n"
         f"User: {prompt}\n"
-        "Assistant: "
+        # "Assistant: "
+        "Assistant: Respond concisely in 1 sentence and within 40 characters. "
+        "Tailor your response based on the user's previously mentioned medical condition or current health status. "
+        "For example, if the user mentions hypertension, provide advice such as setting reminders for medication, checking blood pressure regularly, or ensuring they take their medication as prescribed."
     )
     
     try:
@@ -42,6 +66,9 @@ def query_llama(prompt, history=""):
         
         response_text = response['message']['content']
         save_history(prompt, response_text)
+        
+        # Speak the response before sending JSON
+        speak(response_text)
         
         result = json.dumps({
             'success': True,

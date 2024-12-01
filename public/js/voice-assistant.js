@@ -82,7 +82,9 @@ class VoiceAssistant {
     async processTranscript(transcript) {
         if (this.isProcessing) return;
         this.isProcessing = true;
-    
+        
+        console.log('Processing transcript:', transcript); // Add this debug log
+        
         try {
             const response = await fetch('/api/process-voice', {
                 method: 'POST',
@@ -92,11 +94,15 @@ class VoiceAssistant {
                 body: JSON.stringify({ transcript })
             });
             
+            console.log('Response status:', response.status); // Add this debug log
+            
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             
             const result = await response.json();
+            console.log('Processed result:', result); // Add this debug log
+            
             if (result.success) {
                 this.updateOrCreateMessage('ai', result.response);
             } else {
