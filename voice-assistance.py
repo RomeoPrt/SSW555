@@ -4,7 +4,6 @@ import sys
 import os
 import pygame
 from gtts import gTTS
-# voice-assistance.py
 
 HISTORY_FILE = "./history.txt"
 
@@ -50,7 +49,6 @@ def query_llama(prompt, history=""):
     full_prompt = (
         f"{history}\n"
         f"User: {prompt}\n"
-        # "Assistant: "
         "Assistant: Respond concisely in 1 sentence and within 40 characters. "
         "Tailor your response based on the user's previously mentioned medical condition or current health status. "
         "For example, if the user mentions hypertension, provide advice such as setting reminders for medication, checking blood pressure regularly, or ensuring they take their medication as prescribed."
@@ -67,7 +65,6 @@ def query_llama(prompt, history=""):
         response_text = response['message']['content']
         save_history(prompt, response_text)
         
-        # Speak the response before sending JSON
         speak(response_text)
         
         result = json.dumps({
@@ -75,7 +72,6 @@ def query_llama(prompt, history=""):
             'response': response_text
         })
         
-        # Ensure the response is properly flushed
         print(result, flush=True)
         return result
         
@@ -89,7 +85,7 @@ def query_llama(prompt, history=""):
         return result
 
 if __name__ == "__main__":
-    # Read input from Node.js one line at a time
+
     for line in sys.stdin:
         input_message = line.strip()
         if input_message:

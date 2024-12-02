@@ -1,4 +1,3 @@
-// app.js
 import express from 'express';
 import session from 'express-session';
 import configRoutes from './routes/index.js';

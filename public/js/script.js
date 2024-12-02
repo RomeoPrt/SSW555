@@ -1,4 +1,3 @@
-// Select necessary elements
 const wrapper = document.querySelector('.wrapper');
 const forms = {
     login: wrapper.querySelector('.form-box.login'),

@@ -1,4 +1,3 @@
-// Add this to a new file: public/js/medicine-management.js
 document.addEventListener("DOMContentLoaded", function () {
   const addMedicineForm = document.getElementById("addMedicineForm");
   const medicineList = document.getElementById("medicineList");
@@ -54,10 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             `;
 
-      // Add to list
       medicineList.appendChild(medicineItem);
-
-      // Reset form
       addMedicineForm.reset();
     } catch (error) {
       errorMessage.textContent = error.message;
