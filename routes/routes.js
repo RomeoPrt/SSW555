@@ -133,12 +133,12 @@ router.post('/api/medicine', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const { medicationName, dosage, dosageForm, frequency } = req.body;
+        const { medicationName, dosage, dosageForm, frequency, totalDoses } = req.body;
         
         // Validate the input
-        if (!medicationName || !dosage || !dosageForm || !frequency) {
+        if (!medicationName || !dosage || !dosageForm || !frequency || !totalDoses) {
             return res.status(400).json({ 
-                error: 'All fields (medicationName, dosage, dosageForm, frequency) are required' 
+                error: 'All fields (medicationName, dosage, dosageForm, frequency, totalDoses) are required' 
             });
         }
 
@@ -147,7 +147,8 @@ router.post('/api/medicine', async (req, res) => {
             medicationName,
             Number(dosage),
             dosageForm,
-            frequency
+            frequency,
+            Number(totalDoses)
         );
 
         return res.status(201).json(newMedicine);

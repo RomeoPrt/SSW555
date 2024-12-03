@@ -237,7 +237,7 @@ body {
     margin-bottom: 20px;
 }
 
-.back-btn {
+/* .back-btn {
     padding: 8px 16px;
     background-color: #1da1f2;
     color: #ffffff;
@@ -249,4 +249,11 @@ body {
 
 .back-btn:hover {
     background-color: #1991da;
+} */
+
+.remaining-days {
+    color: #1da1f2;
+    font-weight: bold;
+    margin-top: 5px;
+    padding: 5px 0;
 }

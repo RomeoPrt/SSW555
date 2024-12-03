@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       medicationName: document.getElementById("medicationName").value,
       dosage: parseFloat(document.getElementById("dosage").value),
       dosageForm: document.getElementById("dosageForm").value,
+      totalDoses: parseInt(document.getElementById("totalDoses").value),
       frequency: (() => {
         const number = document.getElementById("frequencyNumber").value;
         const unit = document.getElementById("frequencyUnit").value;
@@ -43,6 +44,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <div>Dosage: ${newMedicine.dosage} tablets/dose</div>
                     <div>Form: ${newMedicine.dosageForm}</div>
                     <div>Frequency: ${newMedicine.frequency}</div>
+                    <div>Total Doses: ${newMedicine.totalDoses}</div>
+                    <div class="remaining-days">Remaining Days: You have enough medication for ${newMedicine.remainingDays} days.</div>
                     <button onclick="removeMedication('${newMedicine._id}')" class="remove-btn">Remove</button>
                 </div>
             `;
