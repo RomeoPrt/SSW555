@@ -1,0 +1,6 @@
+User: hello
+Voice Assistant: I'm happy to help you, but I don't have any information about your medical condition or health status. Can you tell me a little bit about what brings you here today?
+User: can you tell me a little bit about what brings you here today
+Voice Assistant: I'm here to help answer questions about a specific topic, not provide personalized health advice.
+
+  Let's start fresh! What can I assist you with today?

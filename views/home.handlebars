@@ -6,7 +6,7 @@
       <div class="medicine-item">
         <h3>{{medicationName}}</h3>
         <div class="medicine-details">
-          <div>Strength: {{strength}}mg</div>
+          <div>Dosage: {{dosage}}mg</div>
           <div>Form: {{dosageForm}}</div>
           <div>Frequency: {{frequency}}</div>
           <button onclick="removeMedication('{{_id}}')" class="remove-btn">Remove</button>
@@ -22,8 +22,8 @@
           <input type="text" id="medicationName" name="medicationName" required>
         </div>
         <div class="form-group">
-          <label for="strength">Strength (mg)</label>
-          <input type="number" id="strength" name="strength" required min="1">
+          <label for="dosage">Dosage (tablets/dose)</label>
+          <input type="number" id="dosage" name="dosage" required min="1" step="0.5">
         </div>
         <div class="form-group">
           <label for="dosageForm">Dosage Form</label>
@@ -37,18 +37,15 @@
         </div>
         <div class="form-group">
           <label for="frequency">Frequency</label>
-          <select id="frequencyOption" name="frequencyOption" required>
-            <option value="">Select frequency</option>
-            <option value="hourly">Hourly</option>
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="custom">Custom</option>
-          </select>
-          <div id="timeInputContainer" class="time-input">
-            <input type="time" id="medicationTime" name="medicationTime" required>
-            <input type="text" id="customFrequency" name="customFrequency" 
-                   placeholder="e.g., Every 4 hours" style="display: none;">
+          <div class="frequency-inputs">
+            <input type="number" id="frequencyNumber" name="frequencyNumber" required min="1">
+            <select id="frequencyUnit" name="frequencyUnit" required>
+              <option value="">Select unit</option>
+              <option value="hour">Hour(s)</option>
+              <option value="day">Day(s)</option>
+              <option value="week">Week(s)</option>
+              <option value="month">Month(s)</option>
+            </select>
           </div>
         </div>
         <button type="submit" class="add-btn">Add Medication</button>
