@@ -73,49 +73,28 @@ router.get('/home', (req, res) => {
 
 router.post('/api/process-voice', async (req, res) => {
     const { transcript } = req.body;
-  
     if (!transcript) {
-      return res.status(400).json({
-        success: false,
-        error: 'No transcript provided'
-      });
+        return res.status(400).json({
+            success: false,
+            error: 'No transcript provided'
+        });
     }
-  
+
     try {
-      console.log('Received transcript:', transcript);
-  
-      const aiResponse = new Promise((resolve, reject) => {
-        let responseData = '';
-        
-        aiModel.stdout.once('data', (data) => {
-          responseData = data.toString().trim();
-          console.log('AI model response:', responseData);
-          
-          try {
-            const result = JSON.parse(responseData);
-            resolve(result);
-          } catch (parseError) {
-            console.error('Error parsing AI model response:', parseError);
-            reject(new Error('Invalid response from the AI model'));
-          }
-        });
-        
-        aiModel.stdout.once('error', (error) => {
-          reject(error);
-        });
-        
         aiModel.stdin.write(transcript + '\n');
-      });
-      
-      const result = await aiResponse;
-      res.json(result);
-      
+        const response = await new Promise((resolve, reject) => {
+            aiModel.stdout.once('data', data => resolve(data.toString()));
+            aiModel.stdout.once('error', reject);
+        });
+        
+        const result = JSON.parse(response);
+        res.json(result);
     } catch (error) {
-      console.error('Error processing voice:', error);
-      res.status(500).json({
-        success: false,
-        error: 'Failed to process transcript'
-      });
+        console.error('Error:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Processing error'
+        });
     }
 });
 
