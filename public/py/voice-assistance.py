@@ -5,7 +5,6 @@ import os
 from gtts import gTTS
 from pygame import mixer
 import logging
-from queue import Queue
 from threading import Thread
 from concurrent.futures import ThreadPoolExecutor
 
@@ -21,7 +20,8 @@ class VoiceAssistant:
         self.response_cache = {}  # Simple cache for responses
         mixer.init(frequency=22050)  # Lower audio quality for speed
         self._initialize_ollama()
-    
+        self.history = self._load_history()
+
     def _initialize_ollama(self):
         # Pre-warm the model
         try:
@@ -30,6 +30,25 @@ class VoiceAssistant:
             ])
         except Exception as e:
             logging.error(f"Model initialization error: {str(e)}")
+
+    def _load_history(self):
+        """Load conversation history from file."""
+        if os.path.exists(HISTORY_FILE):
+            try:
+                with open(HISTORY_FILE, 'r') as f:
+                    return json.load(f)
+            except Exception as e:
+                logging.error(f"Error loading history: {str(e)}")
+        return []
+
+    def _save_history(self, user_input, response_text):
+        """Save user input and AI response to history file."""
+        self.history.append({'user': user_input, 'assistant': response_text})
+        try:
+            with open(HISTORY_FILE, 'w') as f:
+                json.dump(self.history, f, indent=4)
+        except Exception as e:
+            logging.error(f"Error saving history: {str(e)}")
 
     def speak(self, text):
         try:
@@ -53,16 +72,17 @@ class VoiceAssistant:
         if cache_key in self.response_cache:
             return self.response_cache[cache_key]
 
+        # Include history in the prompt
+        messages = [{'role': 'user', 'content': history['user']} for history in self.history]
+        messages += [{'role': 'assistant', 'content': history['assistant']} for history in self.history]
+        messages.append({'role': 'user', 'content': prompt})
+
         try:
-            # Simplified prompt for faster processing
             response = ollama.chat(
                 model='llama3.2', 
-                messages=[{
-                    'role': 'user',
-                    'content': prompt
-                }],
+                messages=messages,
                 options={
-                    'num_predict': 50,  # Limit response length
+                    'num_predict': 150,  # Limit response length
                     'temperature': 0.7   # Lower creativity for speed
                 }
             )
@@ -70,7 +90,8 @@ class VoiceAssistant:
             response_text = response['message']['content']
             
             if response_text:
-                # Start speech synthesis in background
+                # Save to history and synthesize speech
+                self._save_history(prompt, response_text)
                 self.executor.submit(self.speak, response_text)
                 
                 result = {
