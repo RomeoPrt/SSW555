@@ -1,6 +1,6 @@
 <div class="container">
   <div class="sidebar">
-    <h2> <a href="/medications"> My Medications </a> </h2>
+    <h2>  My Medications </h2>
     <div class="medicine-list" id="medicineList">
       {{#each user.medicine}}
       <div class="medicine-item">
@@ -81,3 +81,8 @@
 <script src="/public/js/voice-assistant.js"></script>
 <script src="/public/js/medicine-management.js"></script>
 <script src="/public/js/medication.js"></script>
+<script>
+if ('webkitSpeechRecognition' in window) {
+    new webkitSpeechRecognition();
+}
+</script>

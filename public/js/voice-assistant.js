@@ -3,12 +3,100 @@ class VoiceAssistant {
         this.isListening = false;
         this.recognition = null;
         this.isProcessing = false;
-        this.audioContext = null;
+        this.messageBuffer = '';
+        this.processingDelay = 300; // Reduced delay
         this.setupElements();
         this.setupSpeechRecognition();
+        this.pendingRequests = new Set();
+    }
+
+    setupSpeechRecognition() {
+        if ('webkitSpeechRecognition' in window) {
+            this.recognition = new webkitSpeechRecognition();
+            
+            // Optimize for speed
+            this.recognition.continuous = false;
+            this.recognition.interimResults = false;
+            this.recognition.lang = 'en-US';
+            this.recognition.maxAlternatives = 1;
+
+            // Increase recognition speed
+            this.recognition.continuous = false;
+            
+            this.recognition.onresult = this.handleSpeechResult.bind(this);
+            this.recognition.onend = () => {
+                if (this.isListening) {
+                    this.recognition.start();
+                }
+            };
+        }
+    }
+
+    handleSpeechResult(event) {
+        if (event.results.length > 0) {
+            const transcript = event.results[0][0].transcript;
+            this.messageBuffer = transcript;
+            this.processSpeech();
+        }
+    }
+
+    processSpeech() {
+        if (!this.messageBuffer || this.isProcessing) return;
+        
+        this.isProcessing = true;
+        const currentText = this.messageBuffer;
+        this.messageBuffer = '';
+
+        // Cancel any pending requests
+        this.pendingRequests.forEach(controller => controller.abort());
+        this.pendingRequests.clear();
+
+        // Create new abort controller for this request
+        const controller = new AbortController();
+        this.pendingRequests.add(controller);
+
+        fetch('/api/process-voice', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ transcript: currentText }),
+            signal: controller.signal
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.success) {
+                this.updateOrCreateMessage('ai', result.response);
+            }
+        })
+        .catch(error => {
+            if (error.name === 'AbortError') return;
+            console.error('Error:', error);
+        })
+        .finally(() => {
+            this.pendingRequests.delete(controller);
+            this.isProcessing = false;
+            if (this.messageBuffer) {
+                this.processSpeech();
+            }
+        });
+
+        this.updateOrCreateMessage('user', currentText);
+    }
+
+    updateOrCreateMessage(role, content) {
+        const div = document.createElement('div');
+        div.className = `message ${role}-message`;
+        div.textContent = content;
+        this.conversationContainer.appendChild(div);
+        
+        // Optimized scrolling
+        if (this.scrollTimeout) clearTimeout(this.scrollTimeout);
+        this.scrollTimeout = setTimeout(() => {
+            this.conversationContainer.scrollTop = this.conversationContainer.scrollHeight;
+        }, 10);
     }
 
     setupElements() {
+        // Cache DOM elements
         this.toggleButton = document.getElementById('toggleButton');
         this.statusMessage = document.getElementById('statusMessage');
         this.conversationContainer = document.getElementById('conversationContainer');
@@ -17,139 +105,33 @@ class VoiceAssistant {
         this.toggleButton.addEventListener('click', () => this.toggleListening());
     }
 
-    setupSpeechRecognition() {
-        if ('webkitSpeechRecognition' in window) {
-            this.recognition = new webkitSpeechRecognition();
-            this.recognition.continuous = true;
-            this.recognition.interimResults = true;
-
-            this.recognition.onresult = (event) => {
-                let interimTranscript = '';
-                let finalTranscript = '';
-
-                for (let i = event.resultIndex; i < event.results.length; i++) {
-                    const transcript = event.results[i][0].transcript;
-                    if (event.results[i].isFinal) {
-                        finalTranscript += transcript;
-                        this.processTranscript(transcript);
-                    } else {
-                        interimTranscript += transcript;
-                    }
-                }
-
-                if (interimTranscript) {
-                    this.updateOrCreateMessage('user', interimTranscript, true);
-                }
-                if (finalTranscript) {
-                    this.updateOrCreateMessage('user', finalTranscript);
-                }
-            };
-
-            this.recognition.onerror = (event) => {
-                console.error('Speech recognition error:', event.error);
-                this.stopListening();
-            };
-        } else {
-            this.toggleButton.disabled = true;
-            this.statusMessage.textContent = 'Speech recognition not supported in this browser';
-        }
-    }
-
-    updateOrCreateMessage(role, content, isInterim = false) {
-        const messageId = isInterim ? 'interim-message' : Date.now().toString();
-        let messageElement = document.getElementById(messageId);
-        
-        if (!messageElement) {
-            messageElement = document.createElement('div');
-            messageElement.id = messageId;
-            messageElement.className = `message ${role}-message`;
-            this.conversationContainer.appendChild(messageElement);
-        }
-        
-        messageElement.textContent = content;
-        this.conversationContainer.scrollTop = this.conversationContainer.scrollHeight;
-    }
-
-    async playAudio(audioUrl) {
-        const audio = new Audio(audioUrl);
-        try {
-            await audio.play();
-        } catch (error) {
-            console.error('Error playing audio:', error);
-        }
-    }
-
-    async processTranscript(transcript) {
-        if (this.isProcessing) return;
-        this.isProcessing = true;
-        
-        console.log('Processing transcript:', transcript);
-        
-        try {
-            const response = await fetch('/api/process-voice', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ transcript })
-            });
-            
-            console.log('Response status:', response.status); 
-            
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            
-            const result = await response.json();
-            console.log('Processed result:', result); 
-            
-            if (result.success) {
-                this.updateOrCreateMessage('ai', result.response);
-            } else {
-                this.updateOrCreateMessage('ai', result.error || 'Sorry, I encountered an error processing your request.');
-            }
-        } catch (error) {
-            console.error('Error processing transcript:', error);
-            this.updateOrCreateMessage('ai', 'Sorry, I encountered an error processing your request.');
-        } finally {
-            this.isProcessing = false;
-        }
-    }
-
     toggleListening() {
-        if (this.isListening) {
-            this.stopListening();
-        } else {
-            this.startListening();
-        }
+        this.isListening ? this.stopListening() : this.startListening();
     }
 
     startListening() {
         this.isListening = true;
-        this.recognition.start();
-        this.toggleButton.textContent = 'Stop Listening';
-        this.toggleButton.classList.remove('inactive');
-        this.toggleButton.classList.add('active');
-        this.statusMessage.textContent = 'Listening...';
-        this.statusMessage.classList.remove('not-listening');
-        this.statusMessage.classList.add('listening');
-        this.waves.forEach(wave => wave.style.display = 'block');
+        try {
+            this.recognition.start();
+            this.toggleButton.textContent = 'Stop Listening';
+            this.toggleButton.className = 'active';
+            this.statusMessage.textContent = 'Listening...';
+            this.waves.forEach(wave => wave.style.display = 'block');
+        } catch (error) {
+            console.error('Error:', error);
+            this.stopListening();
+        }
     }
 
     stopListening() {
         this.isListening = false;
         this.recognition.stop();
         this.toggleButton.textContent = 'Start Listening';
-        this.toggleButton.classList.remove('active');
-        this.toggleButton.classList.add('inactive');
+        this.toggleButton.className = 'inactive';
         this.statusMessage.textContent = 'Microphone is inactive';
-        this.statusMessage.classList.remove('listening');
-        this.statusMessage.classList.add('not-listening');
         this.waves.forEach(wave => wave.style.display = 'none');
     }
 }
 
-// Initialize the voice assistant when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-    new VoiceAssistant();
-});
+// Initialize immediately
+new VoiceAssistant();
