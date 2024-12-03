@@ -9,19 +9,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const formData = {
       medicationName: document.getElementById("medicationName").value,
-      strength: parseInt(document.getElementById("strength").value),
+      dosage: parseFloat(document.getElementById("dosage").value),
       dosageForm: document.getElementById("dosageForm").value,
       frequency: (() => {
-        const frequencyOption = document.getElementById("frequencyOption").value;
-        const medicationTime = document.getElementById("medicationTime").value;
-        const customFrequency = document.getElementById("customFrequency").value;
-        
-        if (frequencyOption === 'custom') {
-          return customFrequency;
-        } else {
-          return `${frequencyOption} at ${medicationTime}`;
-        }
-      })()
+        const number = document.getElementById("frequencyNumber").value;
+        const unit = document.getElementById("frequencyUnit").value;
+        return `Every ${number} ${unit}(s)`;
+      })(),
     };
 
     try {
@@ -46,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
       medicineItem.innerHTML = `
                 <h3>${newMedicine.medicationName}</h3>
                 <div class="medicine-details">
-                    <div>Strength: ${newMedicine.strength}mg</div>
+                    <div>Dosage: ${newMedicine.dosage} tablets/dose</div>
                     <div>Form: ${newMedicine.dosageForm}</div>
                     <div>Frequency: ${newMedicine.frequency}</div>
                     <button onclick="removeMedication('${newMedicine._id}')" class="remove-btn">Remove</button>
@@ -60,14 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  document.getElementById('frequencyOption').addEventListener('change', function(e) {
-    const customInput = document.getElementById('customFrequency');
-    if (e.target.value === 'custom') {
-        customInput.style.display = 'block';
+  document
+    .getElementById("frequencyOption")
+    .addEventListener("change", function (e) {
+      const customInput = document.getElementById("customFrequency");
+      if (e.target.value === "custom") {
+        customInput.style.display = "block";
         customInput.required = true;
-    } else {
-        customInput.style.display = 'none';
+      } else {
+        customInput.style.display = "none";
         customInput.required = false;
-    }
-});
+      }
+    });
 });

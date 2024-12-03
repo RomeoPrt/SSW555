@@ -8,7 +8,8 @@ import { create_medication, get_all_medications, get_medicine_by_id, delete_medi
 const router = Router();
 
 // const aiModel = spawn("python3.10", ["voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
-const aiModel = spawn("python3", ["public/py/voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
+// const aiModel = spawn("python3", ["public/py/voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
+const aiModel = spawn("python", ["public/py/voice-assistance.py"], { stdio: ["pipe", "pipe", "inherit"] });
 let aiBuffer = [];
 
 aiModel.stdout.on("data", (data) => {
@@ -132,19 +133,19 @@ router.post('/api/medicine', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-        const { medicationName, strength, dosageForm, frequency } = req.body;
+        const { medicationName, dosage, dosageForm, frequency } = req.body;
         
         // Validate the input
-        if (!medicationName || !strength || !dosageForm || !frequency) {
+        if (!medicationName || !dosage || !dosageForm || !frequency) {
             return res.status(400).json({ 
-                error: 'All fields (medicationName, strength, dosageForm, frequency) are required' 
+                error: 'All fields (medicationName, dosage, dosageForm, frequency) are required' 
             });
         }
 
         const newMedicine = await create_medication(
             req.session.user._id,
             medicationName,
-            Number(strength),
+            Number(dosage),
             dosageForm,
             frequency
         );

@@ -25,18 +25,22 @@ const get_all_medications = async (userId) => {
     return user.medicine;
 };
 
-const create_medication = async (userId, medicationName, strength, dosageForm, frequency) => {
+const create_medication = async (userId, medicationName, dosage, dosageForm, frequency) => {
     if (!userId || typeof userId !== 'string' || userId.trim() === "") throw 'Error: Invalid user ID';
-    if (!medicationName || !strength || !dosageForm || !frequency) throw 'All fields: medicationName, strength, dosageForm, frequency must be filled in';
+    if (!medicationName || !dosage || !dosageForm || !frequency) throw 'All fields: medicationName, dosage, dosageForm, frequency must be filled in';
     if (typeof medicationName !== 'string' || medicationName.trim() === '') throw 'Medication name must be a non-empty string';
-    if (typeof strength !== 'number' || isNaN(strength) || strength <= 0) throw 'Strength must be a positive number';
+    if (typeof dosage !== 'number' || isNaN(dosage) || dosage <= 0) throw 'Dosage must be a positive number';
     if (typeof dosageForm !== 'string' || dosageForm.trim() === '') throw 'Dosage form must be a non-empty string';
     if (typeof frequency !== 'string' || frequency.trim() === '') throw 'Frequency must be a non-empty string';
+
+    if (!frequency.match(/^Every \d+ (hour|day|week|month)\(s\)$/)) {
+        throw 'Frequency must be in the format "Every X unit(s)"';
+    }
 
     const medicine = {
         _id: new ObjectId(),
         medicationName: medicationName.trim(),
-        strength: strength,
+        dosage: dosage,
         dosageForm: dosageForm.trim(),
         frequency: frequency.trim(),
         currentlyInUse: true,

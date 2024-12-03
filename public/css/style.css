@@ -212,3 +212,41 @@ body {
   border-radius: 4px;
   font-size: 0.9rem;
 }
+
+.frequency-inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.frequency-inputs input[type="number"] {
+  width: 80px;
+}
+
+.frequency-inputs select {
+  flex: 1;
+}
+
+.medications-container {
+    padding: 20px;
+}
+
+.medications-container .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.back-btn {
+    padding: 8px 16px;
+    background-color: #1da1f2;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.back-btn:hover {
+    background-color: #1991da;
+}

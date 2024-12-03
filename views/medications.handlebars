@@ -1,11 +1,16 @@
-<h1>Medications</h1>
-<ul id="medication-list">
-    {{#each medications}}
-        <li id="med-{{_id}}">
-            {{medicationName}} ({{strength}} mg, {{dosageForm}}, {{frequency}})
-            <button onclick="removeMedication('{{_id}}')">Remove</button>
-        </li>
-    {{/each}}
-</ul>
+<div class="medications-container">
+    <div class="header">
+        <h1>Medications</h1>
+        <a href="/home" class="back-btn">Back to Home</a>
+    </div>
+    <ul id="medication-list">
+        {{#each medications}}
+            <li id="med-{{_id}}">
+                {{medicationName}} ({{dosage}} tablets/dose, {{dosageForm}}, {{frequency}})
+                <button onclick="removeMedication('{{_id}}')">Remove</button>
+            </li>
+        {{/each}}
+    </ul>
+</div>
 
 <script src="/public/js/medication.js"></script>
