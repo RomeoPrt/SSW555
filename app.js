@@ -38,6 +38,9 @@ const hbs = exphbs.create({
         },
         multiply: function(value, multiple) {
             return value * multiple;
+        },
+        encodeURIComponent: function (text) {
+            return encodeURIComponent(text);
         }
     },
     defaultLayout: 'main'
@@ -56,6 +59,7 @@ app.use('/', (req, res, next) => {
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 
 configRoutes(app);
 

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/public/css/style.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <h2>Memory Journal</h2>
+        <br>
+        <button onclick="window.location.href='/'">Back to Home</button>
+        <br><br><br>
+        <h3>Your Old Notes:</h3>
+        <br><br>
+        <div class="old-notes-list">
+          {{#each notes}}
+            <div class="note-item">
+              <a href="/journal/{{encodeURIComponent this.content}}" class="note-link">{{this.content}}</a>
+            </div>
+            <div class="audio-note-item">
+              <!-- Display the audio note if it exists -->
+              {{#if this.audioUrl}}
+                <h4>{{this.audioName}}</h4>
+                <audio controls>
+                  <source src="{{this.audioUrl}}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
+              {{/if}}
+            </div>
+          {{else}}
+            <p>No notes yet. Start adding some!</p>
+          {{/each}}
+        </div>
+        <br>
+        <br>
+        <h3>Audio Notes:</h3>
+        <br>
+        <br>
+        <div id="audioNotesSection"></div>
+      </div>
+
+      <div class="main-content">
+        <h3>Add a New Note</h3>
+        <br><br>
+        <form id="addNoteForm">
+          <textarea id="noteContent" name="noteContent" placeholder="Write your note here..." rows="8"></textarea>
+          <br>
+          <button type="submit" class="add-btn">Save Note</button>
+          <br>
+          <br>
+          <div class="form-group">
+            <br>
+            <h3>Record an Audio Note<h3>
+            
+            <input type="hidden" id="audioNote" name="audioNote">
+            <input type="text" id="audioNoteName" name="audioNoteName" placeholder="Enter audio name">
+            <button type="button" id="recordAudio" class="record-btn">Record Audio</button>
+            <p id="transcriptOutput"></p>
+          </div>
+          <br>
+          
+        </form>
+      </div>
+    </div>
+
+    <script>
+      // Audio Notes Section DOM Reference
+      const audioNotesSection = document.getElementById('audioNotesSection');
+
+      // Setup for recording audio and generating transcript
+      let mediaRecorder;
+      let audioChunks = [];
+      let audioBlob;
+      let audioUrl;
+      let isRecording = false;
+
+      document.getElementById('recordAudio').addEventListener('click', function () {
+        if (isRecording) {
+          mediaRecorder.stop();
+          document.getElementById('recordAudio').textContent = 'Record Audio';
+          isRecording = false;
+        } else {
+          if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+              .then(function (stream) {
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = function (event) {
+                  audioChunks.push(event.data);
+                };
+                mediaRecorder.onstop = function () {
+                  audioBlob = new Blob(audioChunks, { type: 'audio/mpeg' });
+                  audioUrl = URL.createObjectURL(audioBlob);
+
+                  // Store audio URL in hidden input
+                  document.getElementById('audioNote').value = audioUrl;
+
+                  // Add Audio Note to 'Audio Notes' section
+                  const audioName = document.getElementById('audioNoteName').value.trim() || 'Unnamed Audio';
+                  const audioContainer = document.createElement('div');
+                  const audioTitle = document.createElement('h4');
+                  const audioElement = document.createElement('audio');
+
+                  audioTitle.textContent = audioName;
+                  audioElement.controls = true;
+                  audioElement.src = audioUrl;
+
+                  audioContainer.appendChild(audioTitle);
+                  audioContainer.appendChild(audioElement);
+                  audioNotesSection.appendChild(audioContainer);
+                  document.getElementById('audioNoteName').value = '';
+                  audioChunks = []; // Reset chunks for next recording
+                };
+                mediaRecorder.start();
+                document.getElementById('recordAudio').textContent = 'Stop Recording';
+                isRecording = true;
+              })
+              .catch(function (error) {
+                console.log('Error accessing microphone: ', error);
+              });
+          } else {
+            alert('Your browser does not support audio recording.');
+          }
+        }
+      });
+
+      // Keep existing speech recognition logic unchanged
+    </script>
+
+    <script src="/public/js/journal-notes.js"></script>
+  </body>
+</html>
