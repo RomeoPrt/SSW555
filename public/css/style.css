@@ -126,11 +126,51 @@ body {
   color: #14171a;
 }
 
+.header-buttons {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.memory-journal-btn {
+  display: block;
+  margin: 20px auto; 
+  padding: 12px 20px; 
+  color: #1da1f2; 
+  background-color: transparent; 
+  text-decoration: none; 
+  font-weight: bold; 
+  font-size: 16px; 
+  border: 2px solid #1da1f2; 
+  border-radius: 8px; 
+  text-align: center; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+}
+
+/* .memory-journal-btn:hover {
+  background-color: #1991da;
+} */
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.logout-btn:hover {
+  background-color: #c82333;
+}
+
+/* 
 .logout-btn {
   color: #1da1f2;
   text-decoration: none;
   font-weight: bold;
-}
+} */
 
 .voice-assistant h2 {
   font-size: 1.25rem;
@@ -262,19 +302,20 @@ body {
   width: 100%; /* This makes the textarea expand to take the full width of its container */
   max-width: 600px; /* Optionally, you can set a max-width */
 }
-
+/* 
 .memory-journal-btn {
   display: block;
-  margin: 20px auto; /* Centers the button horizontally */
-  padding: 12px 20px; /* Adds padding for a balanced look */
-  color: #1da1f2; /* Twitter-like blue */
-  background-color: transparent; /* No background */
-  text-decoration: none; /* Removes underline */
-  font-weight: bold; /* Bold text */
-  font-size: 16px; /* Adjust font size for readability */
-  border: 2px solid #1da1f2; /* Border matching the text color */
-  border-radius: 8px; /* Rounded corners */
-  text-align: center; /* Centers the text */
-  cursor: pointer; /* Pointer cursor for interaction */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
-}
+  margin: 20px auto; 
+  padding: 12px 20px; 
+  color: #1da1f2; 
+  background-color: transparent; 
+  text-decoration: none; 
+  font-weight: bold; 
+  font-size: 16px; 
+  border: 2px solid #1da1f2; 
+  border-radius: 8px; 
+  text-align: center; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+} */
+

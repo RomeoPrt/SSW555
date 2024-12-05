@@ -60,7 +60,10 @@
   <div class="main-content">
     <div class="header">
       <h1>Hi {{user.firstName}}</h1>
-      <a href="/logout" class="logout-btn">Logout</a>
+      <div class="header-buttons">
+        <button class="memory-journal-btn" onclick="window.location.href='/journal'">Memory Journal</button>
+        <a href="/logout" class="logout-btn">Logout</a>
+      </div>
     </div>
     <div class="voice-assistant">
       <h2>Ollama Voice Assistant</h2>
@@ -78,7 +81,6 @@
     </div>
     <br>
     <br>
-    <button class="memory-journal-btn" onclick="window.location.href='/journal'">Memory Journal</button>
   </div>
 </div>
 

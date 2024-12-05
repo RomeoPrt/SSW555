@@ -3,7 +3,10 @@ import { registerUser, loginUser } from '../data/user.js';
 import { spawn } from 'child_process';
 import { getConversationMessages } from '../data/conversation.js';
 import { create_medication, get_all_medications, get_medicine_by_id, delete_medication } from '../data/medicine.js';
-
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const router = Router();
 
@@ -187,10 +190,17 @@ router.get('/medications', async (req, res) => {
 });
 
 
-import fs from 'fs';
-import path from 'path';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const notesFilePath = path.join(__dirname, '..', 'notes', 'text-notes.txt');
 
-const notesFilePath = path.resolve('C:/Users/birva/SpeakSmart/notes/text-notes.txt');
+// Create note directory if does not exist
+if (!fs.existsSync(path.dirname(notesFilePath))) {
+    fs.mkdirSync(path.dirname(notesFilePath), { recursive: true });
+}
+if (!fs.existsSync(notesFilePath)) {
+    fs.writeFileSync(notesFilePath, '');
+}
 // Route to get the journal page with all notes
 router.get('/journal', async (req, res) => {
     try {
