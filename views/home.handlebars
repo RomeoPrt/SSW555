@@ -1,6 +1,6 @@
 <div class="container">
   <div class="sidebar">
-    <h2>  My Medications </h2>
+    <h2> My Medications </h2>
     <div class="medicine-list" id="medicineList">
       {{#each user.medicine}}
       <div class="medicine-item">
@@ -62,22 +62,22 @@
       <h1>Hi {{user.firstName}}</h1>
       <a href="/logout" class="logout-btn">Logout</a>
     </div>
-    <div class="voice-assistant">
-      <h2>Ollama Voice Assistant</h2>
-      <div id="statusMessage" class="status not-listening">
-        Microphone is inactive
-      </div>
-      <button id="toggleButton" class="inactive">Start Listening</button>
-      <div class="transcript-container" id="conversationContainer">
-        {{#each conversationMessages}}
-        <div class="message {{this.role}}-message">
-          {{this.content}}
-        </div>
-        {{/each}}
-      </div>
+  <div class="voice-assistant">
+    <h2>Ollama Voice Assistant</h2>
+    <div id="statusMessage" class="status not-listening">
+      Microphone is inactive
     </div>
-    <br>
-    <br>
+    <button id="toggleButton" class="inactive">Start Listening</button>
+    <div class="transcript-container" id="conversationContainer">
+      {{#each conversationMessages}}
+      <div class="message {{this.role}}-message">
+        {{this.content}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
+  <br>
+  <br>
     <button class="memory-journal-btn" onclick="window.location.href='/journal'">Memory Journal</button>
   </div>
 </div>

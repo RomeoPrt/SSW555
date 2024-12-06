@@ -10,9 +10,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const formData = {
       medicationName: document.getElementById("medicationName").value,
       dosage: parseFloat(document.getElementById("dosage").value),
+      dosage: parseFloat(document.getElementById("dosage").value),
       dosageForm: document.getElementById("dosageForm").value,
       totalDoses: parseInt(document.getElementById("totalDoses").value),
       frequency: (() => {
+        const number = document.getElementById("frequencyNumber").value;
+        const unit = document.getElementById("frequencyUnit").value;
+        return `Every ${number} ${unit}(s)`;
+      })(),
         const number = document.getElementById("frequencyNumber").value;
         const unit = document.getElementById("frequencyUnit").value;
         return `Every ${number} ${unit}(s)`;
@@ -42,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <h3>${newMedicine.medicationName}</h3>
                 <div class="medicine-details">
                     <div>Dosage: ${newMedicine.dosage} tablets/dose</div>
+                    <div>Dosage: ${newMedicine.dosage} tablets/dose</div>
                     <div>Form: ${newMedicine.dosageForm}</div>
                     <div>Frequency: ${newMedicine.frequency}</div>
                     <div>Total Doses: ${newMedicine.totalDoses}</div>
@@ -63,10 +69,20 @@ document.addEventListener("DOMContentLoaded", function () {
       const customInput = document.getElementById("customFrequency");
       if (e.target.value === "custom") {
         customInput.style.display = "block";
+  document
+    .getElementById("frequencyOption")
+    .addEventListener("change", function (e) {
+      const customInput = document.getElementById("customFrequency");
+      if (e.target.value === "custom") {
+        customInput.style.display = "block";
         customInput.required = true;
       } else {
         customInput.style.display = "none";
+      } else {
+        customInput.style.display = "none";
         customInput.required = false;
+      }
+    });
       }
     });
 });

@@ -31,6 +31,7 @@ const create_medication = async (userId, medicationName, dosage, dosageForm, fre
         throw 'All fields: medicationName, dosage, dosageForm, frequency, totalDoses must be filled in';
     if (typeof medicationName !== 'string' || medicationName.trim() === '') throw 'Medication name must be a non-empty string';
     if (typeof dosage !== 'number' || isNaN(dosage) || dosage <= 0) throw 'Dosage must be a positive number';
+    if (typeof dosage !== 'number' || isNaN(dosage) || dosage <= 0) throw 'Dosage must be a positive number';
     if (typeof dosageForm !== 'string' || dosageForm.trim() === '') throw 'Dosage form must be a non-empty string';
     if (typeof frequency !== 'string' || frequency.trim() === '') throw 'Frequency must be a non-empty string';
     if (typeof totalDoses !== 'number' || isNaN(totalDoses) || totalDoses <= 0) throw 'Total doses must be a positive number';
@@ -65,6 +66,7 @@ const create_medication = async (userId, medicationName, dosage, dosageForm, fre
     const medicine = {
         _id: new ObjectId(),
         medicationName: medicationName.trim(),
+        dosage: dosage,
         dosage: dosage,
         dosageForm: dosageForm.trim(),
         frequency: frequency.trim(),

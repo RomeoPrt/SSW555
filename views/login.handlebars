@@ -1,31 +1,51 @@
-<div>
-<h1>Welcome to Health AI</h1>
-<h2>Login</h2>
-
-{{#if error}}
-<div>
-    {{error}}
-</div>
-{{/if}}
-
-<form method="POST" action="/login">
-    <div>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required placeholder="Enter your email" >
+<div class="login-container">
+  <div class="login-card">
+    <div class="card-header">
+      <h1 class="card-title">Welcome to SpeakSmart</h1>
+      <p class="card-description">Sign in to access your health dashboard</p>
     </div>
-    <br>
+    
+    <div class="card-content">
+      {{#if error}}
+      <div class="error-message">
+        {{error}}
+      </div>
+      {{/if}}
 
-    <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required placeholder="Enter your password">
+    <form method="POST" action="/login" class="login-form">
+     <div class="form-group">
+        <label for="email">Email:</label>
+        <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Enter your email"
+            required
+          >
+        </div>
+        <br>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            placeholder="Enter your password"
+            required
+          >
+        </div>
+        <br>
+
+        <button type="submit" class="login-button">Sign In</button>
+      </form>
     </div>
-    <br>
 
-    <button type="submit">Login</button>
-
-    <div>
-    Don't have an account? 
-    <a href="/register">Register here</a>
+    <div class="card-footer">
+      <p class="register-text">
+        Don't have an account? 
+        <a href="/register">Register here</a>
+      </p>
     </div>
-</form>
+  </div>
 </div>

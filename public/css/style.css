@@ -242,7 +242,11 @@ body {
     margin-bottom: 20px;
 }
 
+<<<<<<< HEAD
 /* .back-btn {
+=======
+.back-btn {
+>>>>>>> 0cb77f0355ee74aeb2ab726b1955ddf47d4879d2
     padding: 8px 16px;
     background-color: #1da1f2;
     color: #ffffff;
@@ -254,6 +258,7 @@ body {
 
 .back-btn:hover {
     background-color: #1991da;
+<<<<<<< HEAD
 } */
 
 .remaining-days {
@@ -459,3 +464,6 @@ input:focus {
   }
 }
 
+=======
+}
+>>>>>>> 0cb77f0355ee74aeb2ab726b1955ddf47d4879d2
