@@ -16,20 +16,20 @@ body {
 }
 
 .sidebar {
-  background: rgba(255, 255, 255, 0.4); /* Increase transparency */
-  backdrop-filter: blur(8px); /* Frosted glass effect */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: absolute; /* Position it relative to the top-left corner */
-  top: 20px; /* Distance from the top */
-  left: 20px; /* Distance from the left */
-  width: 350px; /* Adjust width to fit content nicely */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 350px;
 }
 
 .main-content {
-  margin-left: 300px; 
+  margin-left: 300px;
   flex: 1;
   min-height: 100vh;
   background-color: #ffffff;
@@ -41,7 +41,7 @@ body {
 }
 
 .medicine-item {
-  background: rgba(255, 255, 255, 0.3); /* Transparent background */
+  background: rgba(255, 255, 255, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
   padding: 10px;
@@ -62,7 +62,7 @@ body {
 }
 
 .add-medicine-form {
-  background: rgba(255, 255, 255, 0.3); /* Increase transparency */
+  background: rgba(255, 255, 255, 0.3);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -98,7 +98,7 @@ body {
 }
 
 .add-btn {
-  background-color: #219ebc; /* Match the background color tones */
+  background-color: #219ebc;
   border: none;
   color: white;
   font-size: 1rem;
@@ -110,7 +110,7 @@ body {
 
 
 .add-btn:hover {
-  background-color: #176b8a; /* Darker shade on hover */
+  background-color: #176b8a;
 }
 
 .error-message {
@@ -242,11 +242,7 @@ body {
     margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
 /* .back-btn {
-=======
-.back-btn {
->>>>>>> 0cb77f0355ee74aeb2ab726b1955ddf47d4879d2
     padding: 8px 16px;
     background-color: #1da1f2;
     color: #ffffff;
@@ -258,7 +254,6 @@ body {
 
 .back-btn:hover {
     background-color: #1991da;
-<<<<<<< HEAD
 } */
 
 .remaining-days {
@@ -269,7 +264,7 @@ body {
 }
 
 #noteContent {
-  width: 100%; /* This makes the textarea expand to take the full width of its container */
+  width: 100%;
   max-width: 600px; /* Optionally, you can set a max-width */
 }
 
@@ -463,7 +458,3 @@ input:focus {
     font-size: 1.15rem;
   }
 }
-
-=======
-}
->>>>>>> 0cb77f0355ee74aeb2ab726b1955ddf47d4879d2

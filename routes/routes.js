@@ -133,27 +133,19 @@ router.post('/api/medicine', async (req, res) => {
             return res.status(401).json({ error: 'Unauthorized' });
         }
 
-<<<<<<< HEAD
         const { medicationName, dosage, dosageForm, frequency, totalDoses } = req.body;
         
         // Validate the input
         if (!medicationName || !dosage || !dosageForm || !frequency || !totalDoses) {
             return res.status(400).json({ 
                 error: 'All fields (medicationName, dosage, dosageForm, frequency, totalDoses) are required' 
-=======
-        const { medicationName, dosage, dosageForm, frequency } = req.body;
-        
-        // Validate the input
-        if (!medicationName || !dosage || !dosageForm || !frequency) {
-            return res.status(400).json({ 
-                error: 'All fields (medicationName, dosage, dosageForm, frequency) are required' 
->>>>>>> 0cb77f0355ee74aeb2ab726b1955ddf47d4879d2
             });
         }
 
         const newMedicine = await create_medication(
             req.session.user._id,
             medicationName,
+            Number(dosage),
             Number(dosage),
             dosageForm,
             frequency,
