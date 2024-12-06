@@ -339,3 +339,44 @@ body {
   margin: 10px 0;
 }
 
+
+/* Scoped Page Wrapper Styles */
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+}
+
+/* Note Container Styles */
+.note-container {
+  text-align: center;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+}
+
+/* Heading Styles */
+.note-container h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* Preformatted Text Styles */
+.note-container pre {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #555;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+  white-space: pre-wrap; /* To wrap long text */
+  word-wrap: break-word; /* To handle long words */
+}
