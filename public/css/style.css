@@ -16,15 +16,16 @@ body {
 }
 
 .sidebar {
-  width: 300px;
-  background-color: #ffffff;
-  border-right: 1px solid #e1e8ed;
+  background: rgba(255, 255, 255, 0.4); /* Increase transparency */
+  backdrop-filter: blur(8px); /* Frosted glass effect */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
   padding: 20px;
-  height: 100vh;
-  position: fixed;
-  left: 0;
-  top: 0;
-  overflow-y: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: absolute; /* Position it relative to the top-left corner */
+  top: 20px; /* Distance from the top */
+  left: 20px; /* Distance from the left */
+  width: 350px; /* Adjust width to fit content nicely */
 }
 
 .main-content {
@@ -40,11 +41,12 @@ body {
 }
 
 .medicine-item {
-  padding: 10px;
-  border: 1px solid #e1e8ed;
+  background: rgba(255, 255, 255, 0.3); /* Transparent background */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 8px;
+  padding: 10px;
   margin-bottom: 10px;
-  background-color: #f8f9fa;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .medicine-item h3 {
@@ -60,10 +62,14 @@ body {
 }
 
 .add-medicine-form {
-  border-top: 1px solid #e1e8ed;
-  padding-top: 15px;
-  margin-top: 15px;
+  background: rgba(255, 255, 255, 0.3); /* Increase transparency */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+
 
 .add-medicine-form h3 {
   font-size: 0.95rem;
@@ -92,20 +98,19 @@ body {
 }
 
 .add-btn {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  background-color: #1da1f2;
-  color: #ffffff;
+  background-color: #219ebc; /* Match the background color tones */
   border: none;
-  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 0.9rem;
+  transition: background-color 0.3s ease;
 }
 
+
 .add-btn:hover {
-  background-color: #1991da;
+  background-color: #176b8a; /* Darker shade on hover */
 }
 
 .error-message {
@@ -278,3 +283,179 @@ body {
   cursor: pointer; /* Pointer cursor for interaction */
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
 }
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('./backgroundd.jpg') no-repeat center center;
+  background-size: cover; /* Ensures the image covers the whole screen */
+  padding: 1rem;
+  overflow: hidden;
+}
+
+/* Container styles */
+.login-container {
+  width: 100%;
+  max-width: 30rem; /* Increased width for larger inputs */
+  position: relative;
+}
+
+.login-card {
+  background: rgba(255, 255, 255, 0.7); /* More transparent box */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  padding: 2.5rem;
+}
+
+/* Card header styles */
+.card-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.75rem; /* Slightly larger for prominence */
+  font-weight: 700;
+  color: #023047;
+}
+
+/* Card content styles */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Increased spacing for a clean look */
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+label {
+  color: #023047;
+  font-size: 1rem; /* Adjusted size for better readability */
+  font-weight: 600;
+}
+
+input {
+  padding: 1rem; /* Increased padding for larger fields */
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  font-size: 1rem; /* Adjusted size for consistency with labels */
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.8); /* Slightly transparent input background */
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%; /* Ensures the inputs stretch to the size of the box */
+}
+
+input:focus {
+  outline: none;
+  border-color: #48cae4;
+  box-shadow: 0 0 0 1px #48cae4;
+}
+
+/* Button Styles */
+.login-button {
+  padding: 1rem; /* Increased padding for a larger button */
+  background: #023047;
+  color: white;
+  border: none;
+  border-radius: 1rem;
+  font-weight: 600; /* Increased font weight */
+  font-size: 1.25rem; /* Adjusted size to fit the button */
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  width: 100%; /* Button spans full width */
+}
+
+.login-button:hover {
+  background: #219ebc;
+  transform: scale(1.02);
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem; /* Slightly larger font for readability */
+  color: #64748b;
+}
+
+.forgot-password {
+  font-size: 0.9rem;
+  color: #2563eb;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+.card-footer {
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.register-link {
+  color: #2563eb;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+/* Close Button */
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  color: #2563eb;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .login-card {
+    padding: 1.5rem;
+  }
+
+  .card-title {
+    font-size: 1.5rem;
+  }
+
+  .login-button {
+    font-size: 1.15rem;
+  }
+}
+
