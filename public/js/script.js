@@ -45,12 +45,38 @@ document.querySelector('.icon-close').addEventListener('click', () => {
     Object.keys(forms).forEach((form) => wrapper.classList.remove(`active-${form}`));
 });
 
+/*
 // Notification popup toggle
 document.querySelector('.notification-btn').addEventListener('click', () => {
     document.querySelector('.notification-popup').style.display = 'block';
 });
 document.querySelector('.close-popup').addEventListener('click', () => {
     document.querySelector('.notification-popup').style.display = 'none';
+});
+*/
+
+// Reminders popup toggle
+document.addEventListener("DOMContentLoaded", () => {
+    const remindersPopup = document.querySelector(".reminders-popup");
+    document.querySelector("#reminders-link").addEventListener("click", (e) => {
+        e.preventDefault();
+        remindersPopup.style.display = "block";
+    });
+    document.querySelector(".close-reminders-popup").addEventListener("click", () => {
+        remindersPopup.style.display = "none";
+    });
+});
+
+// Notifications popup toggle
+document.addEventListener("DOMContentLoaded", () => {
+    const notificationsPopup = document.querySelector(".notifications-popup");
+    document.querySelector("#notifications-link").addEventListener("click", (e) => {
+        e.preventDefault();
+        notificationsPopup.style.display = "block";
+    });
+    document.querySelector(".close-notifications-popup").addEventListener("click", () => {
+        notificationsPopup.style.display = "none";
+    });
 });
 
 // Contact popup toggle
