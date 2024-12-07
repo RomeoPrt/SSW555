@@ -6,14 +6,270 @@
 }
 
 body {
-  background-color: #f5f8fa;
-  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: url('./backgroundd.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.form-container h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #023047; /* Blue text */
+  margin-bottom: 10px;
+}
+
+.form-container p {
+  font-size: 1rem;
+  color: #657786; /* Subtle gray text */
+  margin-bottom: 20px;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.8); /* Light background */
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.form-container input:focus {
+  border-color: #219ebc; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(33, 158, 188, 0.5); /* Glow effect */
+  outline: none;
 }
 
 .app-container {
   display: flex;
   min-height: 100vh;
 }
+
+/* General Container Styling */
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('./backgroundd.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Card Styling */
+.login-card {
+  background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Header Styling */
+.card-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #023047; /* Blue */
+  margin-bottom: 10px;
+}
+
+.card-header p {
+  font-size: 1rem;
+  color: #657786; /* Subtle gray */
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+.form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #14171a;
+  font-size: 1rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.8);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #219ebc; /* Blue border on focus */
+  box-shadow: 0 0 5px rgba(33, 158, 188, 0.5); /* Glow effect */
+  outline: none;
+}
+
+/* Button Styling */
+.login-button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #219ebc; /* Blue background */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #176b8a; /* Darker blue on hover */
+}
+
+/* Footer Styling */
+.card-footer {
+  margin-top: 20px;
+}
+
+.register-text {
+  font-size: 0.9rem;
+  color: #657786; /* Subtle gray */
+}
+
+.register-link {
+  color: #1da1f2; /* Light blue */
+  text-decoration: none;
+}
+
+.register-link:hover {
+  color: #176b8a; /* Darker blue on hover */
+}
+/* Center the registration card */
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: url('./backgroundd.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* Style the registration card */
+.register-card {
+  background: rgba(255, 255, 255, 0.9); /* Light transparent background */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Header styling */
+.card-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #023047;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form styling */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Subtle border around each group */
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+/* Label styling */
+.form-group label {
+  font-size: 1rem;
+  color: #14171a;
+}
+
+/* Input styling */
+.form-group input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.9);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #219ebc;
+  box-shadow: 0 0 5px rgba(33, 158, 188, 0.5);
+  outline: none;
+}
+
+/* Register button styling */
+.register-button {
+  padding: 15px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: #219ebc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+}
+
+.register-button:hover {
+  background-color: #176b8a;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1.2rem; /* Larger font for visibility */
+  font-weight: bold;
+  color: white;
+  background-color: #219ebc; /* Blue background */
+  border: none;
+  border-radius: 8px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.form-container button:hover {
+  background-color: #176b8a; /* Darker blue on hover */
+}
+
+.form-container a {
+  display: block;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #1da1f2; /* Light blue text */
+  text-decoration: none; /* Remove underline */
+  transition: color 0.2s ease;
+}
+
+.form-container a:hover {
+  color: #176b8a;
+}
+
 
 .sidebar {
   width: 300px;
@@ -150,16 +406,25 @@ body {
 
 
 .logout-btn {
-  padding: 8px 16px;
-  background-color: #dc3545;
-  color: #ffffff;
-  text-decoration: none;
-  border-radius: 20px;
+  position: fixed;
+  top: 20px;
+  right: 60px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #023047;
+  border: 2px solid #023047;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .logout-btn:hover {
-  background-color: #c82333;
+  background: #219ebc;
+  color: white;
 }
 
 .voice-assistant h2 {
@@ -280,54 +545,59 @@ body {
 }
 
 .contact-btn {
-  padding: 8px 16px;
-  background-color: #28a745;
-  color: #ffffff;
-  border: none;
-  border-radius: 20px;
+  position: fixed;
+  top: 20px;
+  right: 200px;
+  background: rgba(255, 255, 255, 0.6);
+  color: #023047;
+  border: 2px solid #023047;
+  padding: 12px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
-  margin: 0 10px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
 }
 
 .contact-btn:hover {
-  background-color: #218838;
+  background-color: #219ebc;
+  color: white;
 }
 
 .contact-popup {
   display: none;
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  padding: 20px;
   z-index: 1000;
 }
 
 .contact-content {
-  position: relative;
-  background-color: #fff;
-  margin: 15% auto;
-  padding: 20px;
-  width: 80%;
-  max-width: 500px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: #023047;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 10px 0;
 }
 
 .close-contact {
   position: absolute;
-  right: 20px;
   top: 10px;
-  font-size: 28px;
-  font-weight: bold;
+  right: 10px;
+  font-size: 1.5rem;
+  color: #023047;
   cursor: pointer;
-  color: #666;
+  transition: color 0.3s ease;
 }
 
 .close-contact:hover {
-  color: #333;
+  color: #023047;
 }
 
 .contact-details {
