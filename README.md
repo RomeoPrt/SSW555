@@ -76,10 +76,10 @@ cd [project-directory]
 
 2. Install dependencies:
 ```bash
-npm install vite --save-dev
+npm install 
 ```
 
 3. To start the production server:
 ```bash
-npm run dev
+npm start
 ```
